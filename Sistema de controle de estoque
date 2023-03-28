@@ -1,0 +1,21 @@
+public class Main {
+
+    public static void main(String[] args) {
+        
+        Estoque estoque = new Estoque();
+
+        Produto produto1 = new Produto("Notebook", (int) 3200.0, 190);
+        Produto produto2 = new Produto("Smartphone", (int) 2100.0, 200);
+
+        estoque.adicionarProduto(produto1);
+        estoque.adicionarProduto(produto2);
+
+        Produto produtoEncontrado = estoque.consultarProduto("Notebook");
+        if (produtoEncontrado != null) {
+            System.out.println("Nome: " + produtoEncontrado.getNome());
+            System.out.println("Preço: " + produtoEncontrado.getPreco());
+            System.out.println("Quantidade: " + produtoEncontrado.getQuantidade());
+            
+    }
+  }
+}
