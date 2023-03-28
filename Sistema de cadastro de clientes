@@ -1,0 +1,98 @@
+//Arquivo Main
+
+    public static void main(String[] args) {
+        
+        CadastroCliente cadastroCliente = new CadastroCliente();
+
+        Cliente cliente1 = new Cliente("Carla",  "Rua Amoeira", (int) 190);
+        Cliente cliente2 = new Cliente("Marcio", "Rua Piracia", (int) 52);
+        
+        cadastroCliente.adicionarCliente(cliente1);
+        cadastroCliente.adicionarCliente(cliente2);
+
+        Cliente clienteEncontrado = cadastroCliente.consultarCliente("Marcio");
+        if (clienteEncontrado != null) {
+            System.out.println("Nome: " + clienteEncontrado.getNome());
+            System.out.println("Endereco: " + clienteEncontrado.getEndereco());
+            System.out.println("Telefone: " + clienteEncontrado.getTelefone());
+            
+    }
+  }
+}
+
+//Arquivo Clientepublic class Cliente {
+    private String nome;
+    private String endereco;
+    private int telefone;
+        
+public Cliente (String nome, String endereco, int telefone){
+    this.nome = nome;
+    this.endereco = endereco;
+    this.telefone = telefone;
+}
+
+    Cliente(String carla, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    void add(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void remove(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+}
+
+//Arquivo CadastroCliente
+
+import java.util.ArrayList;
+public class CadastroCliente {
+    private final ArrayList<Cliente> cliente;
+
+    public CadastroCliente() {
+        cliente = new ArrayList<>();
+    }
+
+    public void adicionarCliente(Cliente cliente) {
+        cliente.add(cliente);
+    }
+
+    public void removerCliente(Cliente cliente) {
+        cliente.remove(cliente);
+    }
+
+    public Cliente consultarCliente(String nome) {
+        for (Cliente cliente : cliente) {
+            if (cliente.getNome().equals(nome)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+}
