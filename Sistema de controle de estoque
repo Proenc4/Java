@@ -1,3 +1,5 @@
+//Arquivo Main
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,4 +20,72 @@ public class Main {
             
     }
   }
+}
+
+//Class Estoque
+
+import java.util.ArrayList;
+public class Estoque {
+    private final ArrayList<Produto> produtos;
+
+    public Estoque() {
+        produtos = new ArrayList<>();
+    }
+
+    public void adicionarProduto(Produto produto) {
+        produtos.add(produto);
+    }
+
+    public void removerProduto(Produto produto) {
+        produtos.remove(produto);
+    }
+
+    public Produto consultarProduto(String nome) {
+        for (Produto produto : produtos) {
+            if (produto.getNome().equals(nome)) {
+                return produto;
+            }
+        }
+        return null;
+    }
+}
+
+//Class Produto
+
+public class Produto {
+    private String nome;
+    private int preco;
+    private int quantidade;
+
+public Produto (String nome, int preco, int quantidade){
+    this.nome = nome;
+    this.preco = preco;
+    this.quantidade = quantidade;
+}    
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getPreco() {
+        return preco;
+    }
+
+    public void setPreco(int preco) {
+        this.preco = preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
+    
 }
