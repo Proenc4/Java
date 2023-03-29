@@ -1,0 +1,95 @@
+//Classe CarrinhoCompras
+
+import java.util.ArrayList;
+
+public class CarrinhoCompras {
+    
+    private ArrayList<Produto> produtos;
+
+    public CarrinhoCompras() {
+        produtos = new ArrayList<>();
+    }
+
+    public void adicionarProduto(Produto produto) {
+        produtos.add(produto);
+    }
+
+    public void removerProduto(Produto produto) {
+        produtos.remove(produto);
+    }
+
+    public double calcularValorTotalCompra() {
+        double valorTotal = 0;
+        for (Produto produto : produtos) {
+            valorTotal += produto.calcularValorTotal();
+        }
+        return valorTotal;
+    }
+
+    double calcularValorTotalCompra() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
+
+//Classe Produto
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidade;
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double calcularValorTotal() {
+        return preco * quantidade;
+    }
+}
+
+//Class MAIN
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+        Produto p1 = new Produto("Arroz", 10.0, 2);
+        Produto p2 = new Produto("Feijão", 8.0, 3);
+        Produto p3 = new Produto("Macarrão", 5.0, 4);
+
+        CarrinhoCompras carrinho = new CarrinhoCompras();
+        carrinho.adicionarProduto(p1);
+        carrinho.adicionarProduto(p2);
+        carrinho.adicionarProduto(p3);
+
+        double valorTotal = carrinho.calcularValorTotalCompra();
+        System.out.println("Valor total da compra: R$ " + valorTotal);
+    }
+    
+}
