@@ -1,0 +1,95 @@
+//Classe ContaBancaria
+
+public class ContaBancaria {
+    private String titular;
+    private double saldo;
+    private int numero;
+
+    public ContaBancaria(String titular, double saldo, int numero) {
+        this.titular = titular;
+        this.saldo = saldo;
+        this.numero = numero;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    public void sacar(double valor) {
+        saldo -= valor;
+    }
+}
+
+//Classe GerenciadorContas
+
+import java.util.ArrayList;
+
+public class GerenciadorContas {
+    private ArrayList<ContaBancaria> contas;
+
+    public GerenciadorContas() {
+        contas = new ArrayList<>();
+    }
+
+    public void adicionarConta(ContaBancaria conta) {
+        contas.add(conta);
+    }
+
+    public void removerConta(ContaBancaria conta) {
+        contas.remove(conta);
+    }
+
+    public ContaBancaria buscarConta(int numero) {
+        for (ContaBancaria conta : contas) {
+            if (conta.getNumero() == numero) {
+                return conta;
+            }
+        }
+        return null;
+    }
+}
+
+//Classe MAIN
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+        ContaBancaria c1 = new ContaBancaria("João", 1000.0, 12345);
+        ContaBancaria c2 = new ContaBancaria("Maria", 2000.0, 67890);
+
+        GerenciadorContas gerenciador = new GerenciadorContas();
+        gerenciador.adicionarConta(c1);
+        gerenciador.adicionarConta(c2);
+
+        ContaBancaria c3 = gerenciador.buscarConta(12345);
+        System.out.println("Titular da conta 12345: " + c3.getTitular());
+
+        c2.sacar(500.0);
+        System.out.println("Novo saldo da conta 67890: " + c2.getSaldo());
+    }
+}
